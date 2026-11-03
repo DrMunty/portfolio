@@ -6,7 +6,7 @@ The first screen runs the Fittë routine assistant live in the browser, with the
 
 ## Languages
 
-English and Spanish, with a switch in the header. The language comes from `?lang=es` or `?lang=en` in the URL (handy for a link in the Spanish CV), then from the saved choice, then from the browser. Every string lives in `src/i18n/messages.ts`; a test checks that both languages have the same keys and placeholders and that `index.html` only asks for strings that exist. Exercise names come in both languages from RepDB.
+English and Spanish, with a switch in the header. English is the default. The language comes from `?lang=es` or `?lang=en` in the URL (handy for a link in the Spanish CV), then from the choice saved by the switch; the browser language is not used. Every string lives in `src/i18n/messages.ts`; a test checks that both languages have the same keys and placeholders and that `index.html` only asks for strings that exist. Exercise names come in both languages from RepDB.
 
 ## Stack
 

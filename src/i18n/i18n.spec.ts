@@ -48,15 +48,19 @@ describe('t', () => {
 });
 
 describe('detectLang', () => {
-  it('the URL wins over the stored choice, which wins over the browser', () => {
-    expect(detectLang('?lang=es', 'en', ['en-US'])).toBe('es');
-    expect(detectLang('', 'es', ['en-US'])).toBe('es');
-    expect(detectLang('', null, ['es-ES', 'en'])).toBe('es');
-    expect(detectLang('', null, ['en-GB'])).toBe('en');
+  it('the URL wins over the saved choice', () => {
+    expect(detectLang('?lang=es', 'en')).toBe('es');
+    expect(detectLang('?lang=en', 'es')).toBe('en');
+    expect(detectLang('', 'es')).toBe('es');
+  });
+
+  it('is English by default, whatever language the browser is in', () => {
+    // The browser language is not even an input: a Spanish browser gets English until the switch or ?lang=es says otherwise.
+    expect(detectLang('', null)).toBe('en');
   });
 
   it('ignores values that are not a supported language', () => {
-    expect(detectLang('?lang=fr', 'de', ['en-GB'])).toBe('en');
+    expect(detectLang('?lang=fr', 'de')).toBe('en');
   });
 });
 

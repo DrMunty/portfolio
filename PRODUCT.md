@@ -30,7 +30,7 @@ Reached from the CV (QR to GitHub), LinkedIn (projects section) and the GitHub p
 
 - Four projects. Public demos: Fittë https://beastmode-fitnessapp.vercel.app, HAMD https://movies-hector-albert.vercel.app, Budget Calculator https://projecte2-budget-albert.vercel.app. Alumni Platform has no public demo, only the repo (https://github.com/DrMunty/Projecte1-ITAlumni).
 - Repos: Movies-Hector-Albert, Projecte2-Budget, Projecte1-ITAlumni and the profile repo are public. The two Fittë repos are private.
-- Contact: al96@hotmail.es, https://github.com/DrMunty, https://www.linkedin.com/in/albert-muntal-perez.
+- Contact: amuntalperez@gmail.com, https://github.com/DrMunty, https://www.linkedin.com/in/albert-muntal-perez.
 - Never invent figures, customers or personal data; ask. Verified figures: more than 280 merged pull requests across Fittë front and API, CI on every PR.
 - The routine templates shown in the assistant come from the Fittë API (`routine-templates.data.ts`), which marks them as provisional until the coach's final ones arrive. The portfolio says they are the templates the app offers today.
 - The exercise library of the assistant is the RepDB free dataset: attribution required ("Exercise data by RepDB (repdb.co)", in the footer and the README) and no republishing of the data in a repository, so it is downloaded at build time into a git-ignored folder.
@@ -38,7 +38,7 @@ Reached from the CV (QR to GitHub), LinkedIn (projects section) and the GitHub p
 
 ## Brand Commitments
 
-The look of the Fittë app: neutral near-black surfaces and its mint aurora gradient (lime top left, turquoise bottom right, black text on it), Archivo for everything, gym equipment as the background motif. Page language: English and Spanish with a switch in the header (English by default, Spanish for Spanish browsers or `?lang=es`). Degree, if shown: Ciencias de la Comunicación. The Fittë wordmark is «Fittë» in running text.
+The look of the Fittë app: neutral near-black surfaces and its mint aurora gradient (lime top left, turquoise bottom right, black text on it), Archivo for everything, gym equipment as the background motif. Page language: English and Spanish with a switch in the header (English by default, whatever the browser language; Spanish with the switch or `?lang=es`). Degree, if shown: Ciencias de la Comunicación. The Fittë wordmark is «Fittë» in running text.
 
 ## Evidence on Hand
 

@@ -1,7 +1,7 @@
 import { en, es, type MessageKey } from './messages';
 
-// The language of the page. English is the default; a visitor whose browser is in Spanish gets Spanish, `?lang=es` forces it
-// (handy for a link in the Spanish CV) and the choice is remembered. The state is plain data, so the logic that writes text
+// The language of the page. English is always the default; `?lang=es` selects Spanish (handy for a link in the Spanish CV) and the
+// choice made with the switch is remembered. The state is plain data, so the logic that writes text
 // stays testable without a page.
 export type Lang = 'en' | 'es';
 
@@ -35,12 +35,10 @@ export function setLang(lang: Lang, remember = true): void {
 
 const asLang = (value: string | null | undefined): Lang | null => (value === 'es' || value === 'en' ? value : null);
 
-export function detectLang(search: string, stored: string | null, browserLanguages: readonly string[]): Lang {
+export function detectLang(search: string, stored: string | null): Lang {
   const fromUrl = asLang(new URLSearchParams(search).get('lang'));
   if (fromUrl) return fromUrl;
-  const fromStore = asLang(stored);
-  if (fromStore) return fromStore;
-  return browserLanguages.some((l) => l.toLowerCase().startsWith('es')) ? 'es' : 'en';
+  return asLang(stored) ?? 'en';
 }
 
 export function initLang(): void {
@@ -50,5 +48,5 @@ export function initLang(): void {
   } catch {
     stored = null;
   }
-  current = detectLang(location.search, stored, navigator.languages ?? [navigator.language]);
+  current = detectLang(location.search, stored);
 }
