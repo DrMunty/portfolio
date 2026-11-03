@@ -31,7 +31,7 @@ document.querySelectorAll<HTMLElement>('i[data-icon]').forEach((el) => {
 initLang();
 wireLanguageSwitch();
 wireWizard(document.querySelector<HTMLElement>('[data-assistant]')!, !reduceMotion);
-const background = startField(field, [...document.querySelectorAll('[data-zone]')], reduceMotion);
+const background = startField(field, [...document.querySelectorAll('[data-zone]')], [...document.querySelectorAll('[data-quiet]')], reduceMotion);
 wireWorkIndex(
   [...document.querySelectorAll<HTMLAnchorElement>('.work__list a')],
   document.querySelector<HTMLElement>('[data-preview]')!,
