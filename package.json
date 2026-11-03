@@ -8,7 +8,11 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "data": "node scripts/fetch-exercises.mjs",
+    "predev": "npm run data",
+    "prebuild": "npm run data",
+    "pretypecheck": "npm run data"
   },
   "dependencies": {
     "@fontsource-variable/archivo": "^5.3.0",

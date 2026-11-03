@@ -7,7 +7,7 @@ import copy from '@phosphor-icons/core/assets/regular/copy.svg?raw';
 import githubLogo from '@phosphor-icons/core/assets/regular/github-logo.svg?raw';
 import linkedinLogo from '@phosphor-icons/core/assets/regular/linkedin-logo.svg?raw';
 
-import { wireAssistant } from './ui/assistant';
+import { wireWizard } from './ui/wizard';
 import { startField } from './ui/field';
 import { chapters, intro } from './ui/motion';
 import { wireWorkIndex } from './ui/work-index';
@@ -26,7 +26,7 @@ document.querySelectorAll<HTMLElement>('i[data-icon]').forEach((el) => {
   el.setAttribute('aria-hidden', 'true');
 });
 
-wireAssistant(document.querySelector<HTMLElement>('[data-assistant]')!, !reduceMotion);
+wireWizard(document.querySelector<HTMLElement>('[data-assistant]')!, !reduceMotion);
 const background = startField(field, [...document.querySelectorAll('[data-zone]')], reduceMotion);
 wireWorkIndex(
   [...document.querySelectorAll<HTMLAnchorElement>('.work__list a')],

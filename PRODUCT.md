@@ -33,6 +33,7 @@ Reached from the CV (QR to GitHub), LinkedIn (projects section) and the GitHub p
 - Contact: al96@hotmail.es, https://github.com/DrMunty, https://www.linkedin.com/in/albert-muntal-perez.
 - Never invent figures, customers or personal data; ask. Verified figures: more than 280 merged pull requests across Fittë front and API, CI on every PR.
 - The routine templates shown in the assistant come from the Fittë API (`routine-templates.data.ts`), which marks them as provisional until the coach's final ones arrive. The portfolio says they are the templates the app offers today.
+- The exercise library of the assistant is the RepDB free dataset: attribution required ("Exercise data by RepDB (repdb.co)", in the footer and the README) and no republishing of the data in a repository, so it is downloaded at build time into a git-ignored folder.
 - Domain not decided. No photo of Albert on the page.
 
 ## Brand Commitments

@@ -44,23 +44,16 @@
         <section class="assistant" aria-labelledby="assistant-title" data-assistant data-intro>
           <header>
             <h2 id="assistant-title">Routine assistant, from Fittë</h2>
-            <p>Change an answer and the week is rebuilt.</p>
+            <div class="progress" data-progress aria-hidden="true"></div>
+            <p class="assistant__step" data-step-label aria-live="polite"></p>
           </header>
-          <fieldset class="opts">
-            <legend>Experience</legend>
-            <div class="opts__row" data-experience></div>
-          </fieldset>
-          <fieldset class="opts">
-            <legend>Days per week <em data-rec></em></legend>
-            <div class="opts__row" data-days></div>
-          </fieldset>
-          <fieldset class="opts" data-variants-box hidden>
-            <legend>Split for five days</legend>
-            <div class="opts__row" data-variants></div>
-          </fieldset>
-          <div class="week" data-week role="group" aria-label="Your week"></div>
-          <div class="detail" data-detail aria-live="polite"></div>
-          <p class="assistant__note">A shortened version of the assistant in the app. The templates are the ones Fittë offers today.</p>
+          <div class="assistant__body" data-body></div>
+          <footer class="assistant__nav">
+            <button type="button" class="ghost" data-back>Back</button>
+            <p class="assistant__hint" data-hint></p>
+            <button type="button" class="btn" data-next>Next</button>
+          </footer>
+          <p class="assistant__note">The routine assistant of the app, step by step. The templates are the ones Fittë offers today. Not in this demo: per-exercise plans, the optional AI text and saving.</p>
         </section>
       </section>
 
@@ -210,7 +203,7 @@
     <footer class="shell">
       <div class="foot">
         <span>Albert Muntal</span>
-        <span>Built with Vite, TypeScript and GSAP.</span>
+        <span>Built with Vite, TypeScript and GSAP. <a class="inline" href="https://repdb.co" rel="noopener">Exercise data by RepDB (repdb.co)</a></span>
       </div>
     </footer>
 
