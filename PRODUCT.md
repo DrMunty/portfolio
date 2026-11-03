@@ -20,7 +20,7 @@ A personal portfolio for Albert Muntal, a junior full-stack developer based in S
 
 ## Positioning
 
-Fittë is a real product built alone, with a private backend and more than 280 merged pull requests, and the portfolio can run one of its business rules live in the browser (`suggestSets`, double progression). Few junior portfolios show their own logic running on the first screen.
+Fittë is a real product built alone, with a private backend and more than 280 merged pull requests, and the portfolio runs a shortened version of its routine assistant live in the browser, built from the app's own templates. Few junior portfolios show their own logic running on the first screen.
 
 ## Operating Context
 
@@ -32,18 +32,18 @@ Reached from the CV (QR to GitHub), LinkedIn (projects section) and the GitHub p
 - Repos: Movies-Hector-Albert, Projecte2-Budget, Projecte1-ITAlumni and the profile repo are public. The two Fittë repos are private.
 - Contact: al96@hotmail.es, https://github.com/DrMunty, https://www.linkedin.com/in/albert-muntal-perez.
 - Never invent figures, customers or personal data; ask. Verified figures: more than 280 merged pull requests across Fittë front and API, CI on every PR.
-- The weight step of `suggestSets` comes from `progressionStep` in the Fittë API, which has to be read from the private repo before the demo ships. Until then the step is an editable field.
+- The routine templates shown in the assistant come from the Fittë API (`routine-templates.data.ts`), which marks them as provisional until the coach's final ones arrive. The portfolio says they are the templates the app offers today.
 - Domain not decided. No photo of Albert on the page.
 
 ## Brand Commitments
 
-Mint `#69D49A` as the only accent on dark neutrals, Geist as the typeface, the style of Albert's GitHub profile README. Page language: English. Degree, if shown: Ciencias de la Comunicación. The Fittë wordmark is «Fittë» in running text.
+The look of the Fittë app: neutral near-black surfaces and its mint aurora gradient (lime top left, turquoise bottom right, black text on it), Archivo for display and Geist for text, gym equipment as the background motif. Page language: English. Degree, if shown: Ciencias de la Comunicación. The Fittë wordmark is «Fittë» in running text.
 
 ## Evidence on Hand
 
 - Fittë app captures: `~/Desktop/DrMunty-profile/assets/app-fitte.svg` (today, library, gyms map).
 - LinkedIn project texts: `~/Desktop/LinkedIn/textos-proyectos-linkedin.md`.
-- `suggestSets` source, comments removed, in the GitHub profile README.
+- The routine templates and the recommended-days rule of the Fittë API, ported with tests.
 - Captures of the HAMD, Budget and Alumni demos taken with Playwright at build time.
 - Absent: testimonials, client work, metrics beyond the PR count, a headshot. Do not fabricate them.
 

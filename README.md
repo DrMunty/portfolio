@@ -2,11 +2,11 @@
 
 Personal portfolio of Albert Muntal, full-stack developer. It gathers Fittë, Movie's Platform (HAMD), Budget Calculator and Alumni Platform.
 
-The first screen runs `suggestSets`, the double progression rule of the Fittë API, live in the browser (`src/lib/suggest-sets.ts`, with its tests).
+The first screen runs a shortened version of the Fittë routine assistant live in the browser: experience and days per week build the weekly plan from Fittë's own templates (`src/lib/routine-assistant.ts` and `routine-templates.ts`, with tests). The background is gym equipment drawn on a canvas that reacts to the pointer.
 
 ## Stack
 
-Vite, TypeScript and GSAP (ScrollTrigger, SplitText). No UI framework. Geist fonts self-hosted through Fontsource, icons from Phosphor.
+Vite, TypeScript and GSAP (ScrollTrigger, SplitText). No UI framework. Archivo and Geist self-hosted through Fontsource, interface icons from Phosphor and the gym equipment glyphs from Tabler (the icon family of the app). The look follows the app: neutral near-black and its mint aurora gradient.
 
 ## Scripts
 
@@ -20,7 +20,7 @@ npm run build      # type check and production build into dist/
 ## Structure
 
 - `index.html`: all the content, in plain markup.
-- `src/main.ts`: demo wiring, copy button and motion. Every animation is skipped under `prefers-reduced-motion`.
+- `src/main.ts`: wires the pieces in `src/ui/` (assistant, equipment field, project index, motion) and the copy button. Every animation is skipped under `prefers-reduced-motion`.
 - `src/style.css`: tokens and layout.
 - `src/lib/`: pure logic and its tests.
 - `public/captures/`: captures of the demos, taken with Playwright, and the Fittë app screens.

@@ -14,6 +14,7 @@ const options = dayOptions(TEMPLATES);
 describe('dayOptions', () => {
   it('groups the templates by days per week, from fewest to most days', () => {
     expect(options.map((o) => o.daysPerWeek)).toEqual([1, 2, 3, 4, 5]);
+    expect(dayOptions([...TEMPLATES].reverse()).map((o) => o.daysPerWeek)).toEqual([1, 2, 3, 4, 5]);
   });
 
   it('keeps both ways of training five days as two templates', () => {
@@ -50,6 +51,7 @@ describe('buildWeek', () => {
   it('leaves the rest days without a session and numbers the days from 1', () => {
     const week = buildWeek(TEMPLATES.find((t) => t.key === 'FULL_BODY_3')!);
     expect(week.map((d) => d.day)).toEqual([1, 2, 3, 4, 5, 6, 7]);
+    expect(week[1].session).toBeNull();
     expect(week.map((d) => d.session?.name ?? null)).toEqual([
       'Full Body A', null, 'Full Body B', null, 'Full Body C', null, null,
     ]);
