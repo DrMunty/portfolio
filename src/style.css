@@ -119,9 +119,10 @@ h1 {
   background: var(--panel);
   border: 1px solid var(--line-strong);
   border-radius: var(--r-panel);
-  padding: clamp(16px, 2.4vw, 24px);
+  padding: 20px;
   box-shadow: 0 24px 60px -30px rgb(105 212 154 / 0.18);
 }
+@media (min-width: 900px) { .demo { padding: 24px; } }
 .demo header { display: grid; gap: 8px; }
 .demo h2 { font: 500 0.9375rem var(--mono); color: var(--mint); }
 .demo header p { color: var(--muted); font-size: 0.9375rem; max-width: 52ch; }
@@ -222,7 +223,7 @@ h1 {
 .background { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); width: 100%; }
 .background dt { color: var(--faint); font-size: 0.8125rem; }
 .background dd { color: var(--ink); font-size: 0.9375rem; margin-top: 2px; }
-.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-block: 24px calc(32px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); color: var(--faint); font-size: 0.8125rem; }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-top: 24px; padding-bottom: calc(32px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); color: var(--faint); font-size: 0.8125rem; }
 
 /* motion: hidden only while the intro has not run */
 .motion [data-split], .motion [data-intro] { visibility: hidden; }
