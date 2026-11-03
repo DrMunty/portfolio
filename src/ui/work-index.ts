@@ -6,7 +6,7 @@ const PREVIEWS = [
   { src: '/captures/alumni-desktop.webp', fit: 'cover' },
 ];
 
-export function wireWorkIndex(links: HTMLAnchorElement[], preview: HTMLElement): void {
+export function wireWorkIndex(links: HTMLAnchorElement[], preview: HTMLElement, onShow: (index: number) => void): void {
   if (!matchMedia('(hover: hover) and (min-width: 900px)').matches) return;
   const images = PREVIEWS.map(({ src, fit }) => {
     const img = new Image();
@@ -20,6 +20,7 @@ export function wireWorkIndex(links: HTMLAnchorElement[], preview: HTMLElement):
   const show = (i: number) => {
     images.forEach((img, n) => img.classList.toggle('is-on', n === i));
     links.forEach((link, n) => (n === i ? link.setAttribute('aria-current', 'true') : link.removeAttribute('aria-current')));
+    onShow(i);
   };
   links.forEach((link, i) => {
     link.addEventListener('mouseenter', () => show(i));

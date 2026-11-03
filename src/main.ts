@@ -1,6 +1,4 @@
 import '@fontsource-variable/archivo';
-import '@fontsource-variable/geist';
-import '@fontsource-variable/geist-mono';
 import './style.css';
 
 import arrowUpRight from '@phosphor-icons/core/assets/regular/arrow-up-right.svg?raw';
@@ -29,8 +27,12 @@ document.querySelectorAll<HTMLElement>('i[data-icon]').forEach((el) => {
 });
 
 wireAssistant(document.querySelector<HTMLElement>('[data-assistant]')!, !reduceMotion);
-wireWorkIndex([...document.querySelectorAll<HTMLAnchorElement>('.work__list a')], document.querySelector<HTMLElement>('[data-preview]')!);
-startField(field, [...document.querySelectorAll('[data-zone]')], reduceMotion);
+const background = startField(field, [...document.querySelectorAll('[data-zone]')], reduceMotion);
+wireWorkIndex(
+  [...document.querySelectorAll<HTMLAnchorElement>('.work__list a')],
+  document.querySelector<HTMLElement>('[data-preview]')!,
+  (index) => background.setTint(index),
+);
 
 // Copy the email address; the label confirms it.
 document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {

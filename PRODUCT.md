@@ -37,7 +37,7 @@ Reached from the CV (QR to GitHub), LinkedIn (projects section) and the GitHub p
 
 ## Brand Commitments
 
-The look of the Fittë app: neutral near-black surfaces and its mint aurora gradient (lime top left, turquoise bottom right, black text on it), Archivo for display and Geist for text, gym equipment as the background motif. Page language: English. Degree, if shown: Ciencias de la Comunicación. The Fittë wordmark is «Fittë» in running text.
+The look of the Fittë app: neutral near-black surfaces and its mint aurora gradient (lime top left, turquoise bottom right, black text on it), Archivo for everything, gym equipment as the background motif. Page language: English. Degree, if shown: Ciencias de la Comunicación. The Fittë wordmark is «Fittë» in running text.
 
 ## Evidence on Hand
 

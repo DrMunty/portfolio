@@ -6,7 +6,7 @@ The first screen runs a shortened version of the Fittë routine assistant live i
 
 ## Stack
 
-Vite, TypeScript and GSAP (ScrollTrigger, SplitText). No UI framework. Archivo and Geist self-hosted through Fontsource, interface icons from Phosphor and the gym equipment glyphs from Tabler (the icon family of the app). The look follows the app: neutral near-black and its mint aurora gradient.
+Vite, TypeScript and GSAP (ScrollTrigger, SplitText). No UI framework. Archivo (the font of the app, used for everything) self-hosted through Fontsource, interface icons from Phosphor and the gym equipment glyphs from Tabler (the icon family of the app). The look follows the app: neutral near-black and its mint aurora gradient.
 
 ## Scripts
 
