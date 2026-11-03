@@ -4,6 +4,7 @@ import dumbbell from '@tabler/icons/outline/dumbbell.svg?raw';
 import jumpRope from '@tabler/icons/outline/jump-rope.svg?raw';
 import stopwatch from '@tabler/icons/outline/stopwatch.svg?raw';
 import weight from '@tabler/icons/outline/weight.svg?raw';
+import { quietFactor } from '../lib/quiet-zones';
 
 // Background of gym equipment (the same Tabler icon family as the app). The glyphs breathe in a slow diagonal wave and grow,
 // turn and take a gradient near a "light": the pointer on a computer; on a phone, which has no cursor, three lights that roam
@@ -37,7 +38,7 @@ export interface Field {
   setTint(index: number): void;
 }
 
-export function startField(canvas: HTMLCanvasElement, zones: Element[], reduceMotion: boolean): Field {
+export function startField(canvas: HTMLCanvasElement, zones: Element[], quiet: Element[], reduceMotion: boolean): Field {
   const ctx = canvas.getContext('2d');
   let tint = PROJECT_TINTS[0];
   if (!ctx) return { setTint: () => undefined };
@@ -94,7 +95,9 @@ export function startField(canvas: HTMLCanvasElement, zones: Element[], reduceMo
     ctx!.lineJoin = 'round';
     const cell = w < 700 ? 64 : 84;
     const radius = touchDevice ? 150 : 190;
-    const drift = (scrollY * 0.18) % cell;
+    const drift = reduceMotion ? 0 : (scrollY * 0.18) % cell;
+    // The glyphs fade away behind the blocks of text so they never cut through the letters.
+    const boxes = quiet.map((el) => el.getBoundingClientRect()).filter((box) => box.bottom > -120 && box.top < h + 120);
     for (let j = 0, y = cell / 2 - drift - cell; y < h + cell; j++, y += cell) {
       for (let i = 0, x = cell / 2; x < w + cell; i++, x += cell) {
         const id = hash(i, j);
@@ -111,7 +114,7 @@ export function startField(canvas: HTMLCanvasElement, zones: Element[], reduceMo
         }
         const scale = (26 + wave * 3 + near * 26) / 24;
         const angle = (((id >> 8) % 41) - 20) * 0.01745 + wave * 0.1 + near * 0.7;
-        const alpha = 0.12 + wave * 0.08 + crest * 0.13 + near * 0.75;
+        const alpha = (0.12 + wave * 0.08 + crest * 0.13 + near * 0.75) * quietFactor(x, y, boxes);
         const mix = Math.min(1, (x / w) * 0.6 + (y / h) * 0.4);
         const own = GLYPH_COLORS[(id >> 12) % GLYPH_COLORS.length];
         let c: readonly number[] = own;
@@ -170,6 +173,18 @@ export function startField(canvas: HTMLCanvasElement, zones: Element[], reduceMo
     addEventListener('touchcancel', release, { passive: true });
   }
   addEventListener('resize', resize);
+  if (reduceMotion) {
+    // Nothing moves, but the text does when the page scrolls, so the still frame is drawn again to keep the quiet zones under it.
+    let pending = false;
+    addEventListener('scroll', () => {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(() => {
+        pending = false;
+        draw(performance.now());
+      });
+    }, { passive: true });
+  }
   resize();
   return {
     setTint(index) {

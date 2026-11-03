@@ -342,3 +342,7 @@ button, .cards label, .chips-row label, .card { user-select: none; -webkit-user-
 @media (max-width: 430px) { .nav nav a[href="#work"] { display: none; } }
 .nav__name { white-space: nowrap; }
 @media (pointer: coarse) { .lang button { min-height: 38px; min-width: 40px; } }
+
+/* Text over the equipment background: the glyphs already fade behind it (see lib/quiet-zones.ts); a soft dark halo keeps the rest apart */
+[data-quiet] { text-shadow: 0 0 16px rgb(10 10 10 / 0.9), 0 0 3px rgb(10 10 10 / 0.85); }
+[data-quiet] .btn, [data-quiet] .copy, [data-quiet] .lang button { text-shadow: none; }

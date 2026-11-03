@@ -40,7 +40,7 @@
     <canvas class="bg-field" data-field aria-hidden="true"></canvas>
     <a class="skip" href="#work" data-i18n="skip">Skip to the projects</a>
 
-    <header class="nav shell">
+    <header class="nav shell" data-quiet>
       <a class="nav__name" href="#top">Albert Muntal</a>
       <nav aria-label="Main" data-i18n-attr="aria-label:nav.main">
         <a href="#work" data-i18n="nav.work">Work</a>
@@ -55,7 +55,7 @@
 
     <main id="top">
       <section class="hero shell" aria-labelledby="hero-title" data-zone>
-        <div class="hero__copy">
+        <div class="hero__copy" data-quiet>
           <h1 id="hero-title" data-split data-i18n="hero.title">I build apps from the screen to the database.</h1>
           <p class="hero__sub" data-intro data-i18n="hero.sub">
             Angular and Ionic on the front, NestJS and PostgreSQL behind. Right now I am building Fittë, a fitness and coaching app.
@@ -83,7 +83,7 @@
       <section class="work shell" aria-labelledby="work-title" data-zone>
         <h2 id="work-title" class="sr-only">Projects</h2>
         <div class="work__grid">
-          <nav class="work__list" aria-label="Projects">
+          <nav class="work__list" aria-label="Projects" data-quiet>
             <a href="#fitte" data-i="0"><b>Fittë</b><span data-i18n="idx.fitte">Sep 2026 to now</span></a>
             <a href="#hamd" data-i="1"><b>Movie's<span class="sr-only"> Platform</span></b><span data-i18n="idx.hamd">Aug to Sep 2026</span></a>
             <a href="#budget" data-i="2"><b>Budget<span class="sr-only"> Calculator</span></b><span data-i18n="idx.budget">Jul 2026</span></a>
@@ -212,17 +212,17 @@
       </section>
 
       <section class="contact shell" id="contact" aria-labelledby="contact-title" data-zone>
-        <h2 id="contact-title" data-i18n="contact.title">Looking for my first full-stack role.</h2>
-        <p class="contact__sub" data-i18n="contact.sub">I am based in Spain. Write to me, or find me on GitHub and LinkedIn.</p>
-        <div class="contact__mail">
+        <h2 id="contact-title" data-quiet data-i18n="contact.title">Looking for my first full-stack role.</h2>
+        <p class="contact__sub" data-quiet data-i18n="contact.sub">I am based in Spain. Write to me, or find me on GitHub and LinkedIn.</p>
+        <div class="contact__mail" data-quiet>
           <a class="contact__address" href="mailto:amuntalperez@gmail.com">amuntalperez@gmail.com</a>
           <button class="copy" type="button" data-copy="amuntalperez@gmail.com"><i data-icon="copy"></i><span data-i18n="contact.copy">Copy email</span></button>
         </div>
-        <div class="contact__links">
+        <div class="contact__links" data-quiet>
           <a class="link" href="https://github.com/DrMunty" rel="noopener"><i data-icon="github-logo"></i> GitHub</a>
           <a class="link" href="https://www.linkedin.com/in/albert-muntal-perez" rel="noopener"><i data-icon="linkedin-logo"></i> LinkedIn</a>
         </div>
-        <dl class="background">
+        <dl class="background" data-quiet>
           <div><dt data-i18n="bg.bootcamp">Bootcamp</dt><dd data-i18n="bg.bootcamp.v">UPF, with Fittë as the final project</dd></div>
           <div><dt data-i18n="bg.degree">Degree</dt><dd data-i18n="bg.degree.v">Ciencias de la Comunicación</dd></div>
           <div><dt data-i18n="bg.english">English</dt><dd data-i18n="bg.english.v">Cambridge CAE, 2017</dd></div>
@@ -231,7 +231,7 @@
     </main>
 
     <footer class="shell">
-      <div class="foot">
+      <div class="foot" data-quiet>
         <span>Albert Muntal</span>
         <span><span data-i18n="foot.built">Built with Vite, TypeScript and GSAP.</span> <a class="inline" href="https://repdb.co" rel="noopener">Exercise data by RepDB (repdb.co)</a></span>
       </div>
