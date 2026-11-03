@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Albert Muntal, full-stack developer</title>
+    <meta
+      name="description"
+      content="Albert Muntal is a full-stack developer based in Spain. Projects: Fittë, Movie's Platform, Budget Calculator and Alumni Platform."
+    />
+    <meta name="theme-color" content="#090d0b" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script>
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#work">Skip to the projects</a>
+
+    <header class="nav shell">
+      <a class="nav__name" href="#top">Albert Muntal</a>
+      <nav aria-label="Main">
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/DrMunty" rel="noopener">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero shell" aria-labelledby="hero-title">
+        <div class="hero__copy">
+          <h1 id="hero-title" data-split>I build apps from the screen to the database.</h1>
+          <p class="hero__sub" data-intro>
+            Angular and Ionic on the front, NestJS and PostgreSQL behind. Right now I am building Fittë, a fitness and coaching app.
+          </p>
+          <a class="btn" href="#work" data-intro>See the work</a>
+        </div>
+
+        <section class="demo" aria-labelledby="demo-title" data-demo data-intro>
+          <header>
+            <h2 id="demo-title">suggestSets</h2>
+            <p>
+              A rule from Fittë, running here. A set that reaches the top of its rep range goes up one weight step. The others repeat
+              their weight.
+            </p>
+          </header>
+
+          <div class="demo__params">
+            <label class="field" for="cap">
+              <span>Top of rep range</span>
+              <input id="cap" data-cap type="text" inputmode="numeric" autocomplete="off" value="10" />
+            </label>
+            <fieldset class="seg">
+              <legend>Load type</legend>
+              <input id="load-side" type="radio" name="load" value="PER_SIDE" checked />
+              <label for="load-side">Plates, per side</label>
+              <input id="load-total" type="radio" name="load" value="TOTAL" />
+              <label for="load-total">Total weight</label>
+            </fieldset>
+          </div>
+
+          <div class="demo__sets">
+            <div class="set" data-set data-kind="WORKING">
+              <span class="set__kind">Top set</span>
+              <label class="field"><span data-weight-label>Weight per side, kg</span><input data-weight type="text" inputmode="decimal" autocomplete="off" value="60" /></label>
+              <label class="field"><span>Reps</span><input data-reps type="text" inputmode="numeric" autocomplete="off" value="8" /></label>
+              <output class="set__next" data-next aria-live="polite"></output>
+            </div>
+            <div class="set" data-set data-kind="BACKOFF">
+              <span class="set__kind">Back-off</span>
+              <label class="field"><span data-weight-label>Weight per side, kg</span><input data-weight type="text" inputmode="decimal" autocomplete="off" value="55" /></label>
+              <label class="field"><span>Reps</span><input data-reps type="text" inputmode="numeric" autocomplete="off" value="10" /></label>
+              <output class="set__next" data-next aria-live="polite"></output>
+            </div>
+            <div class="set" data-set data-kind="BACKOFF">
+              <span class="set__kind">Back-off</span>
+              <label class="field"><span data-weight-label>Weight per side, kg</span><input data-weight type="text" inputmode="decimal" autocomplete="off" value="55" /></label>
+              <label class="field"><span>Reps</span><input data-reps type="text" inputmode="numeric" autocomplete="off" value="8" /></label>
+              <output class="set__next" data-next aria-live="polite"></output>
+            </div>
+          </div>
+
+          <p class="demo__note">Example numbers, edit them. This is the function from the Fittë API, with its tests.</p>
+        </section>
+
+        <nav class="peek" aria-label="Projects" data-intro>
+          <a class="sheet" href="#fitte"><b>Fittë</b><span>Sep 2026 to now</span></a>
+          <a class="sheet" href="#hamd"><b>Movie's Platform</b><span>Aug to Sep 2026</span></a>
+          <a class="sheet" href="#budget"><b>Budget Calculator</b><span>Jul 2026</span></a>
+          <a class="sheet" href="#alumni"><b>Alumni Platform</b><span>May to Jun 2026</span></a>
+        </nav>
+      </section>
+
+      <section id="work" aria-label="Projects">
+        <article class="chapter chapter--fitte" id="fitte" aria-labelledby="fitte-title">
+          <div class="chapter__inner shell">
+            <div class="chapter__copy">
+              <p class="chapter__dates">September 2026 to now</p>
+              <h2 id="fitte-title">Fittë</h2>
+              <p>
+                A training and coaching app. A questionnaire builds the plan, a weekly calendar schedules it and a guided workout with a
+                rest timer runs each session. Clients can find and hire a coach, who builds their routines and talks to them in a chat
+                with photos.
+              </p>
+              <p>
+                Built alone as the final project of the UPF bootcamp: more than 280 merged pull requests, one branch per feature, CI on
+                every one.
+              </p>
+              <ul class="chips" aria-label="Stack">
+                <li>Angular</li><li>Ionic</li><li>Capacitor</li><li>NestJS</li><li>Prisma</li><li>PostgreSQL</li><li>GitHub Actions</li>
+              </ul>
+              <div class="chapter__links">
+                <a class="btn" href="https://beastmode-fitnessapp.vercel.app" rel="noopener">Live demo <i data-icon="arrow-up-right"></i></a>
+                <span class="chapter__note">The code is private. Write to me and I will show it to you.</span>
+              </div>
+            </div>
+            <div class="chapter__media">
+              <img
+                class="shot"
+                src="/captures/fitte-app.svg"
+                width="1000"
+                height="651"
+                alt="Three screens of the Fittë app: today's training session, the exercise library and the map of nearby gyms. The app is in Spanish."
+              />
+            </div>
+          </div>
+        </article>
+
+        <article class="chapter chapter--hamd" id="hamd" aria-labelledby="hamd-title">
+          <div class="chapter__inner shell">
+            <div class="chapter__media">
+              <figure class="device">
+                <a class="device__bar" href="https://movies-hector-albert.vercel.app" rel="noopener" aria-label="Open the Movie's Platform demo"><span>movies-hector-albert.vercel.app</span><i data-icon="arrow-up-right"></i></a>
+                <img src="/captures/hamd-desktop.webp" width="1440" height="900" loading="lazy" alt="Home page of Movie's Platform: a trending movie carousel with title, rating and details button, and rows of top rated and recent movies." />
+                <img class="device__phone" src="/captures/hamd-phone.webp" width="390" height="844" loading="lazy" alt="The same home page on a phone." />
+              </figure>
+            </div>
+            <div class="chapter__copy">
+              <p class="chapter__dates">August to September 2026</p>
+              <h2 id="hamd-title">Movie's Platform</h2>
+              <p>
+                A movie site built in a pair with my teammate <a class="inline" href="https://github.com/hectordev4" rel="noopener">Héctor</a>: trending and
+                top rated carousels, search with filters by genre, order and rating, movie and actor pages, ratings and a saved list.
+              </p>
+              <ul class="chips" aria-label="Stack"><li>Angular</li><li>TypeScript</li><li>Tailwind CSS</li><li>Firebase</li><li>Vitest</li></ul>
+              <div class="chapter__links">
+                <a class="btn" href="https://movies-hector-albert.vercel.app" rel="noopener">Live demo <i data-icon="arrow-up-right"></i></a>
+                <a class="link" href="https://github.com/DrMunty/Movies-Hector-Albert" rel="noopener"><i data-icon="github-logo"></i> Source code</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="chapter chapter--budget" id="budget" aria-labelledby="budget-title">
+          <div class="chapter__inner shell">
+            <div class="chapter__copy">
+              <p class="chapter__dates">July 2026</p>
+              <h2 id="budget-title">Budget Calculator</h2>
+              <p>
+                A quote generator for web services. Pick services and the total updates live, send a validated request form, search and
+                sort the history, open any quote and export it to PDF. The interface is in Catalan.
+              </p>
+              <ul class="chips" aria-label="Stack"><li>Angular 22</li><li>Angular Material</li><li>Tailwind CSS</li><li>TypeScript</li></ul>
+              <div class="chapter__links">
+                <a class="btn" href="https://projecte2-budget-albert.vercel.app" rel="noopener">Live demo <i data-icon="arrow-up-right"></i></a>
+                <a class="link" href="https://github.com/DrMunty/Projecte2-Budget" rel="noopener"><i data-icon="github-logo"></i> Source code</a>
+              </div>
+            </div>
+            <div class="chapter__media">
+              <figure class="device device--wide">
+                <a class="device__bar" href="https://projecte2-budget-albert.vercel.app" rel="noopener" aria-label="Open the Budget Calculator demo"><span>projecte2-budget-albert.vercel.app</span><i data-icon="arrow-up-right"></i></a>
+                <img src="/captures/budget-desktop.webp" width="1440" height="900" loading="lazy" alt="Budget Calculator with the SEO and Ads services selected, each with its price in euros." />
+                <img class="device__phone" src="/captures/budget-phone.webp" width="390" height="844" loading="lazy" alt="The same screen on a phone." />
+              </figure>
+            </div>
+          </div>
+        </article>
+
+        <article class="chapter chapter--alumni" id="alumni" aria-labelledby="alumni-title">
+          <div class="chapter__inner shell">
+            <div class="chapter__media">
+              <figure class="device">
+                <a class="device__bar" href="https://github.com/DrMunty/Projecte1-ITAlumni" rel="noopener" aria-label="Open the Alumni Platform repository"><span>github.com/DrMunty/Projecte1-ITAlumni</span><i data-icon="arrow-up-right"></i></a>
+                <img src="/captures/alumni-desktop.webp" width="1440" height="900" loading="lazy" alt="Job Opportunities page of Alumni Platform: a search box, filters and a grid of job cards." />
+                <img class="device__phone" src="/captures/alumni-phone.webp" width="390" height="844" loading="lazy" alt="The mobile layout, a separate design with the logo and a join button." />
+              </figure>
+            </div>
+            <div class="chapter__copy">
+              <p class="chapter__dates">May to June 2026</p>
+              <h2 id="alumni-title">Alumni Platform</h2>
+              <p>
+                A responsive job board and networking interface with separate desktop and mobile layouts, modular components and job and
+                user data loaded from JSON.
+              </p>
+              <ul class="chips" aria-label="Stack"><li>TypeScript</li><li>Vite</li><li>CSS</li></ul>
+              <div class="chapter__links">
+                <a class="btn" href="https://github.com/DrMunty/Projecte1-ITAlumni" rel="noopener"><i data-icon="github-logo"></i> Source code</a>
+                <span class="chapter__note">There is no public demo.</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="contact shell" id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Looking for my first full-stack role.</h2>
+        <p class="contact__sub">I am based in Spain. Write to me, or find me on GitHub and LinkedIn.</p>
+        <div class="contact__mail">
+          <a class="contact__address" href="mailto:al96@hotmail.es">al96@hotmail.es</a>
+          <button class="copy" type="button" data-copy="al96@hotmail.es"><i data-icon="copy"></i><span>Copy email</span></button>
+        </div>
+        <div class="contact__links">
+          <a class="link" href="https://github.com/DrMunty" rel="noopener"><i data-icon="github-logo"></i> GitHub</a>
+          <a class="link" href="https://www.linkedin.com/in/albert-muntal-perez" rel="noopener"><i data-icon="linkedin-logo"></i> LinkedIn</a>
+        </div>
+        <dl class="background">
+          <div><dt>Bootcamp</dt><dd>UPF, with Fittë as the final project</dd></div>
+          <div><dt>Degree</dt><dd>Ciencias de la Comunicación</dd></div>
+          <div><dt>English</dt><dd>Cambridge CAE, 2017</dd></div>
+        </dl>
+      </section>
+    </main>
+
+    <footer class="shell">
+      <div class="foot">
+        <span>Albert Muntal</span>
+        <span>Built with Vite, TypeScript and GSAP.</span>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
