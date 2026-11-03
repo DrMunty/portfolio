@@ -284,6 +284,12 @@ h1 { font-family: var(--display); font-size: clamp(2.5rem, 1rem + 3.2vw, 3.75rem
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
+/* With reduced motion the chapters do not stack on scroll: each one is a plain block in the flow, like on a phone. This goes after the
+   sticky rule above so it wins. */
+@media (prefers-reduced-motion: reduce) {
+  .chapter { position: relative; min-height: 0; padding-block: clamp(40px, 8vw, 96px); }
+}
+
 /* Phones and touch screens */
 button, a, label, select, summary { touch-action: manipulation; }
 button, .cards label, .chips-row label, .card { user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
