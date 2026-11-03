@@ -9,7 +9,7 @@ const URL_DATASET = 'https://exercise-dataset.com/exercises.json';
 const out = resolve(dirname(fileURLToPath(import.meta.url)), '../src/generated/exercise-library.json');
 
 const existing = existsSync(out) ? JSON.parse(readFileSync(out, 'utf8')) : [];
-if (existing.length > 0 && existing[0].nameEs) {
+if (existing.length > 0 && existing[0].nameEs && 'image' in existing[0]) {
   console.log('exercise library already generated');
   process.exit(0);
 }
@@ -29,6 +29,7 @@ const library = exercises.map((e) => ({
   slug: e.id,
   name: e.name_en,
   nameEs: e.name_es ?? e.name_en,
+  image: e.images?.flat?.start ?? e.images?.flat?.main ?? null,
   equipment: e.equipment ?? null,
   bodyPart: e.body_part,
   mechanic: e.mechanic ?? null,
