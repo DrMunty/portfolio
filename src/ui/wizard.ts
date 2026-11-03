@@ -375,6 +375,53 @@ export function wireWizard(root: HTMLElement, animate: boolean): void {
 
   back.addEventListener('click', () => go(-1));
   next.addEventListener('click', () => go(1));
+
+  // Touch: swipe the body left for the next step and right for the previous one. The body follows the finger with some
+  // resistance, springs back if the swipe is short or the step is not answered yet, and vertical scrolling stays native.
+  if (matchMedia('(pointer: coarse)').matches) {
+    let startX = 0;
+    let startY = 0;
+    let dx = 0;
+    let axis: 'x' | 'y' | null = null;
+    let tracking = false;
+    body.addEventListener('touchstart', (e) => {
+      const t = e.touches[0];
+      tracking = !(e.target as HTMLElement).closest('input, select, textarea');
+      startX = t.clientX;
+      startY = t.clientY;
+      dx = 0;
+      axis = null;
+    }, { passive: true });
+    body.addEventListener('touchmove', (e) => {
+      if (!tracking) return;
+      const t = e.touches[0];
+      dx = t.clientX - startX;
+      const dy = t.clientY - startY;
+      if (!axis && Math.max(Math.abs(dx), Math.abs(dy)) > 10) axis = Math.abs(dx) > Math.abs(dy) * 1.4 ? 'x' : 'y';
+      if (axis === 'x' && animate) gsap.set(body, { x: dx * 0.45, autoAlpha: 1 - Math.min(0.5, Math.abs(dx) / 420) });
+    }, { passive: true });
+    const settle = () => {
+      if (!tracking || axis !== 'x' || step === 'done') { tracking = false; return; }
+      tracking = false;
+      const direction = dx < 0 ? 1 : -1;
+      const index = WIZARD_STEPS.indexOf(step);
+      const allowed = Math.abs(dx) > 70 && (direction === -1 ? index > 0 : canContinue(state, step));
+      const blocked = Math.abs(dx) > 70 && direction === 1 && !canContinue(state, step);
+      if (allowed) {
+        gsap.set(body, { x: 0, autoAlpha: 1 });
+        navigator.vibrate?.(10);
+        go(direction);
+        return;
+      }
+      if (blocked) navigator.vibrate?.([6, 40, 6]);
+      if (animate) {
+        if (blocked) gsap.fromTo(body, { x: -10 }, { x: 0, autoAlpha: 1, duration: 0.5, ease: 'elastic.out(1, 0.35)' });
+        else gsap.to(body, { x: 0, autoAlpha: 1, duration: 0.45, ease: 'expo.out' });
+      }
+    };
+    body.addEventListener('touchend', settle, { passive: true });
+    body.addEventListener('touchcancel', settle, { passive: true });
+  }
   render(false);
 }
 

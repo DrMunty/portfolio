@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
     <title>Albert Muntal, full-stack developer</title>
     <meta
       name="description"
@@ -54,6 +54,7 @@
             <button type="button" class="btn" data-next>Next</button>
           </footer>
           <p class="assistant__note">The routine assistant of the app, step by step. The templates are the ones Fittë offers today. Not in this demo: per-exercise plans, the optional AI text and saving.</p>
+          <p class="assistant__swipe">Swipe left or right to move between steps.</p>
         </section>
       </section>
 
@@ -67,6 +68,13 @@
             <a href="#alumni" data-i="3"><b>Alumni<span class="sr-only"> Platform</span></b><span>May to Jun 2026</span></a>
           </nav>
           <div class="work__preview" data-preview aria-hidden="true"></div>
+          <nav class="work__cards" aria-label="Projects" data-cards>
+            <a class="card card--fitte" href="#fitte" data-i="0"><img src="/captures/fitte-app.svg" width="1000" height="651" alt="" loading="lazy" decoding="async"><b>Fittë</b><span>Sep 2026 to now</span></a>
+            <a class="card card--hamd" href="#hamd" data-i="1"><img src="/captures/hamd-desktop.webp" width="1440" height="900" alt="" loading="lazy" decoding="async"><b>Movie's<span class="sr-only"> Platform</span></b><span>Aug to Sep 2026</span></a>
+            <a class="card card--budget" href="#budget" data-i="2"><img src="/captures/budget-desktop.webp" width="1440" height="900" alt="" loading="lazy" decoding="async"><b>Budget<span class="sr-only"> Calculator</span></b><span>Jul 2026</span></a>
+            <a class="card card--alumni" href="#alumni" data-i="3"><img src="/captures/alumni-desktop.webp" width="1440" height="900" alt="" loading="lazy" decoding="async"><b>Alumni<span class="sr-only"> Platform</span></b><span>May to Jun 2026</span></a>
+          </nav>
+          <div class="work__dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
         </div>
       </section>
 

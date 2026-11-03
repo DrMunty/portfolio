@@ -31,6 +31,7 @@ const background = startField(field, [...document.querySelectorAll('[data-zone]'
 wireWorkIndex(
   [...document.querySelectorAll<HTMLAnchorElement>('.work__list a')],
   document.querySelector<HTMLElement>('[data-preview]')!,
+  document.querySelector<HTMLElement>('[data-cards]')!,
   (index) => background.setTint(index),
 );
 

@@ -51,5 +51,13 @@ export function chapters(): void {
       once: true,
       onEnter: (els) => gsap.to(els, { autoAlpha: 1, y: 0, duration: 0.8, ease: 'expo.out', stagger: 0.1 }),
     });
+    // The phone capture drifts against the desktop frame as the chapter scrolls by, so each project has some depth.
+    gsap.utils.toArray<HTMLElement>('.device__phone').forEach((phone) => {
+      gsap.fromTo(
+        phone,
+        { yPercent: 14 },
+        { yPercent: -10, ease: 'none', scrollTrigger: { trigger: phone.closest('.chapter'), start: 'top bottom', end: 'bottom top', scrub: true } },
+      );
+    });
   });
 }
