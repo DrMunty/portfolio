@@ -1,6 +1,7 @@
 // The "Your training" step of the Fittë routine assistant as pure functions: sets, reps, structure, RIR and rest for the
 // whole routine, the values recommended for each experience, and how they read. A port of plan.util.ts and
 // plan-answers.util.ts of the app without the per-exercise customisation and the "Other" free inputs.
+import { t } from '../i18n';
 import type { Experience } from './routine-assistant';
 
 export type SetStructure = 'TOP_BACKOFF' | 'STRAIGHT' | 'PYRAMID';
@@ -16,11 +17,7 @@ export const BACKOFF_REPS_PRESETS: readonly (readonly [number, number])[] = [[8,
 const DEFAULT_TOP_REPS = TOP_REPS_PRESETS[1];
 const DEFAULT_BACKOFF_REPS = BACKOFF_REPS_PRESETS[0];
 
-export const STRUCTURE_OPTIONS: { value: SetStructure; label: string; hint: string }[] = [
-  { value: 'TOP_BACKOFF', label: 'Top set + back-offs', hint: 'One heavy set and the others lighter' },
-  { value: 'STRAIGHT', label: 'Equal sets', hint: 'All with the same weight and effort' },
-  { value: 'PYRAMID', label: 'Pyramid', hint: 'Raise the weight and lower the reps set by set' },
-];
+export const STRUCTURES: readonly SetStructure[] = ['TOP_BACKOFF', 'STRAIGHT', 'PYRAMID'];
 
 export const defaultRestFor = (mechanic: string | null): number => (mechanic === 'compound' ? 120 : 90);
 
@@ -85,15 +82,15 @@ export function prescription(plan: Plan): string {
   if (backoff) {
     const top = repsRange(plan.targetRepsMin, plan.targetRepsMax);
     const rest = repsRange(backoff.min, backoff.max);
-    if (top !== rest) return `1 x ${top} and ${plan.targetSets - 1} x ${rest}`;
+    if (top !== rest) return `1 x ${top} ${t('plan.and')} ${plan.targetSets - 1} x ${rest}`;
   }
   return `${plan.targetSets} x ${repsText(plan)}`;
 }
 
 export function planDetail(plan: Plan): string {
   const detail = `${formatRir(plan.targetRir)}, ${formatRest(plan.restSeconds)}`;
-  if (plan.setStructure === 'STRAIGHT') return `Equal sets, ${detail}`;
-  if (plan.setStructure === 'PYRAMID') return `Pyramid, ${detail}`;
+  if (plan.setStructure === 'STRAIGHT') return `${t('plan.equalSets')}, ${detail}`;
+  if (plan.setStructure === 'PYRAMID') return `${t('plan.pyramidWord')}, ${detail}`;
   return detail;
 }
 
@@ -204,10 +201,9 @@ export function answersPlan(answers: PlanAnswers, autoRest: number): Plan {
   };
 }
 
-const STRUCTURE_PREFIX: Record<SetStructure, string> = { TOP_BACKOFF: '', STRAIGHT: 'equal sets, ', PYRAMID: 'pyramid, ' };
-
 export function summaryText(answers: PlanAnswers): string {
   const plan = answersPlan(answers, 0);
-  const rest = answers.rest === null ? 'automatic rest' : formatRest(answers.rest);
-  return `${prescription(plan)}, ${STRUCTURE_PREFIX[answers.structure]}${formatRir(plan.targetRir)}, ${rest}`;
+  const prefix = { TOP_BACKOFF: '', STRAIGHT: `${t('plan.equalSetsLow')}, `, PYRAMID: `${t('plan.pyramidLow')}, ` }[answers.structure];
+  const rest = answers.rest === null ? t('plan.autoRest') : formatRest(answers.rest);
+  return `${prescription(plan)}, ${prefix}${formatRir(plan.targetRir)}, ${rest}`;
 }

@@ -327,3 +327,15 @@ button, .cards label, .chips-row label, .card { user-select: none; -webkit-user-
 .card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-radius: 10px; border: 1px solid rgb(0 0 0 / 0.5); background: var(--bg); }
 .card b { font-family: var(--display); font-weight: 900; font-size: clamp(1.75rem, 8vw, 2.25rem); line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; padding-inline: 4px; }
 .card span { font-size: 0.875rem; font-weight: 600; padding-inline: 4px; color: var(--on-soft); font-variant-numeric: tabular-nums; }
+
+/* language switch */
+.nav { flex-wrap: nowrap; }
+.nav nav { margin-left: auto; }
+.lang { display: inline-flex; border: 1px solid var(--line-strong); border-radius: 999px; padding: 2px; margin-left: clamp(12px, 2.5vw, 24px); flex: none; }
+.lang button { font: 700 0.75rem var(--sans); letter-spacing: 0.04em; color: var(--muted); background: transparent; border: 0; border-radius: 999px; padding: 6px 11px; cursor: pointer; transition: background-color 0.2s var(--ease), color 0.2s var(--ease), transform 0.15s var(--ease); }
+.lang button:active { transform: scale(0.94); }
+.lang button[aria-pressed="true"] { background: var(--hero); color: var(--on-hero); }
+@media (max-width: 560px) { .nav__gh { display: none; } .nav nav { gap: 14px; } }
+@media (max-width: 430px) { .nav nav a[href="#work"] { display: none; } }
+.nav__name { white-space: nowrap; }
+@media (pointer: coarse) { .lang button { min-height: 38px; min-width: 40px; } }

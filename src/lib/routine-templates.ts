@@ -11,6 +11,8 @@ export interface TemplateExercise {
 
 export interface Session {
   name: string;
+  // Spanish name, only where it differs from the English one (the app uses these for the bro split).
+  nameEs?: string;
   exercises: TemplateExercise[];
 }
 
@@ -102,6 +104,7 @@ export const SESSIONS: Record<string, Session> = {
   },
   BRO_CHEST: {
     name: 'Chest',
+    nameEs: 'Pecho',
     exercises: [
       ex('bench-press', 4, 6, 10), ex('incline-db-press', 3, 8, 12), ex('chest-press-machine', 3, 8, 12),
       ex('cable-fly', 3, 10, 15), ex('pec-deck', 3, 10, 15),
@@ -109,6 +112,7 @@ export const SESSIONS: Record<string, Session> = {
   },
   BRO_BACK: {
     name: 'Back',
+    nameEs: 'Espalda',
     exercises: [
       ex('lat-pulldown', 4, 8, 12), ex('seated-cable-row', 4, 8, 12), ex('single-arm-db-row', 3, 8, 12),
       ex('chest-supported-db-row', 3, 8, 12), ex('back-extension', 3, 10, 15),
@@ -116,6 +120,7 @@ export const SESSIONS: Record<string, Session> = {
   },
   BRO_SHOULDERS: {
     name: 'Shoulders',
+    nameEs: 'Hombro',
     exercises: [
       ex('dumbbell-shoulder-press', 4, 8, 12), ex('lateral-raise', 4, 10, 15), ex('dumbbell-reverse-fly', 3, 10, 15),
       ex('face-pull', 3, 10, 15), ex('db-shrug', 3, 10, 15),
@@ -123,6 +128,7 @@ export const SESSIONS: Record<string, Session> = {
   },
   BRO_ARMS: {
     name: 'Arms',
+    nameEs: 'Brazo',
     exercises: [
       ex('bicep-curl', 4, 8, 12), ex('incline-db-curl', 3, 10, 15), ex('hammer-curl', 3, 10, 15),
       ex('tricep-pushdown', 4, 10, 15), ex('skull-crusher', 3, 8, 12), ex('overhead-tricep-extension', 3, 10, 15),
@@ -130,6 +136,7 @@ export const SESSIONS: Record<string, Session> = {
   },
   BRO_LEGS: {
     name: 'Legs',
+    nameEs: 'Pierna',
     exercises: [
       ex('squat', 4, 6, 10), ex('leg-press', 3, 10, 15), ex('romanian-deadlift', 3, 8, 12),
       ex('leg-extension', 3, 10, 15), ex('leg-curl', 3, 10, 15), ex('machine-calf-raise', 4, 12, 15),

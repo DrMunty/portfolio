@@ -8,7 +8,8 @@ import { fileURLToPath } from 'node:url';
 const URL_DATASET = 'https://exercise-dataset.com/exercises.json';
 const out = resolve(dirname(fileURLToPath(import.meta.url)), '../src/generated/exercise-library.json');
 
-if (existsSync(out) && JSON.parse(readFileSync(out, 'utf8')).length > 0) {
+const existing = existsSync(out) ? JSON.parse(readFileSync(out, 'utf8')) : [];
+if (existing.length > 0 && existing[0].nameEs) {
   console.log('exercise library already generated');
   process.exit(0);
 }
@@ -27,6 +28,7 @@ if (!Array.isArray(exercises) || exercises.length === 0) {
 const library = exercises.map((e) => ({
   slug: e.id,
   name: e.name_en,
+  nameEs: e.name_es ?? e.name_en,
   equipment: e.equipment ?? null,
   bodyPart: e.body_part,
   mechanic: e.mechanic ?? null,

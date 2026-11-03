@@ -1,13 +1,12 @@
 // The choices of the Fittë routine assistant, as pure functions: experience, days per week and the week that results.
+import { getLang } from '../i18n';
 import { REST, SESSIONS, TEMPLATES, type Session, type Template, type TemplateExercise } from './routine-templates';
 
 export type Experience = 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED';
 
-export const EXPERIENCE_OPTIONS: { value: Experience; label: string; hint: string }[] = [
-  { value: 'BEGINNER', label: 'Beginner', hint: 'Less than 1 year' },
-  { value: 'INTERMEDIATE', label: 'Intermediate', hint: '1 to 3 years' },
-  { value: 'ADVANCED', label: 'Advanced', hint: 'More than 3 years' },
-];
+export const EXPERIENCES: readonly Experience[] = ['BEGINNER', 'INTERMEDIATE', 'ADVANCED'];
+
+export const sessionName = (session: Session): string => (getLang() === 'es' && session.nameEs ? session.nameEs : session.name);
 
 // Someone who starts adapts better to a few full body days; with more years, more volume spread over more days.
 const RECOMMENDED_DAYS: Record<Experience, number> = { BEGINNER: 3, INTERMEDIATE: 4, ADVANCED: 5 };

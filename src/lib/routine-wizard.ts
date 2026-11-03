@@ -1,22 +1,15 @@
 // The flow of the Fittë routine assistant: its eight steps, what each one needs before the person can continue, and the
 // small pure rules of the steps (duration, name, start date, steps goal, volume ramp and final week).
+import { getLang, t } from '../i18n';
 import type { Area, AreaMode, EquipmentPreference } from './exercise-fit';
 import { recommendedAnswers, type PlanAnswers } from './plan-answers';
+import type { MessageKey } from '../i18n/messages';
 import type { Experience } from './routine-assistant';
 
 export const WIZARD_STEPS = ['experience', 'days', 'duration', 'equipment', 'injuries', 'plan', 'preview', 'confirm'] as const;
 export type WizardStep = (typeof WIZARD_STEPS)[number];
 
-export const STEP_TITLES: Record<WizardStep, string> = {
-  experience: 'How long have you been training?',
-  days: 'How many days do you train?',
-  duration: 'How many weeks does it last?',
-  equipment: 'What do you train with?',
-  injuries: 'Is anything bothering you?',
-  plan: 'Your training',
-  preview: 'Your routine',
-  confirm: 'Almost ready',
-};
+export const stepTitle = (step: WizardStep): string => t(`step.${step}`);
 
 // ---------- Duration ----------
 export const DEFAULT_WEEKS = 12;
@@ -37,8 +30,8 @@ export const NAME_MAX = 80;
 
 export function nameError(name: string): string | null {
   const length = name.trim().length;
-  if (length < NAME_MIN) return `The name needs at least ${NAME_MIN} characters.`;
-  if (length > NAME_MAX) return `The name is too long (${NAME_MAX} characters at most).`;
+  if (length < NAME_MIN) return t('err.nameShort', { n: NAME_MIN });
+  if (length > NAME_MAX) return t('err.nameLong', { n: NAME_MAX });
   return null;
 }
 
@@ -77,7 +70,7 @@ export function stepSteps(steps: number, direction: 1 | -1): number {
   return Math.min(MAX_DAILY_STEPS, Math.max(MIN_DAILY_STEPS, next));
 }
 
-export const formatSteps = (steps: number): string => String(Math.round(steps)).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+export const formatSteps = (steps: number): string => String(Math.round(steps)).replace(/\B(?=(\d{3})+(?!\d))/g, getLang() === 'es' ? '.' : ',');
 
 // ---------- Final week and volume ramp ----------
 export type FinalWeekMode = 'NONE' | 'DEVOLUME' | 'DELOAD';
@@ -98,10 +91,10 @@ export function toggleDeloadOption(choice: FinalWeekChoice, option: 'fewerSets' 
 }
 
 export function finalWeekHint(choice: FinalWeekChoice): string {
-  if (choice.mode === 'DEVOLUME') return 'The last week has half the sets, with the same weight and the same RIR.';
+  if (choice.mode === 'DEVOLUME') return t('fw.devolume');
   if (choice.mode === 'DELOAD') {
-    if (choice.fewerSets && choice.higherRir) return 'The last week has half the sets and RIR +2.';
-    return choice.fewerSets ? 'The last week has half the sets.' : 'The last week raises the RIR by 2.';
+    if (choice.fewerSets && choice.higherRir) return t('fw.deloadBoth');
+    return choice.fewerSets ? t('fw.deloadSets') : t('fw.deloadRir');
   }
   return '';
 }
@@ -131,10 +124,9 @@ export function rampWeeks(everyWeeks: number, totalWeeks: number, finalWeek: Fin
   return weeks;
 }
 
-export const MUSCLE_LABELS: Record<string, string> = {
-  chest: 'Chest', lats: 'Lats', upperBack: 'Upper back', lowerBack: 'Lower back', shoulders: 'Shoulders', biceps: 'Biceps',
-  triceps: 'Triceps', quadriceps: 'Quadriceps', hamstrings: 'Hamstrings', glutes: 'Glutes', calves: 'Calves', abs: 'Abs',
-};
+export const MUSCLES = ['chest', 'lats', 'upperBack', 'lowerBack', 'shoulders', 'biceps', 'triceps', 'quadriceps', 'hamstrings', 'glutes', 'calves', 'abs'] as const;
+
+export const muscleLabel = (key: string): string => t(`muscle.${key}` as MessageKey);
 
 // ---------- The state of the wizard ----------
 export interface WizardState {

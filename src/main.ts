@@ -7,6 +7,8 @@ import copy from '@phosphor-icons/core/assets/regular/copy.svg?raw';
 import githubLogo from '@phosphor-icons/core/assets/regular/github-logo.svg?raw';
 import linkedinLogo from '@phosphor-icons/core/assets/regular/linkedin-logo.svg?raw';
 
+import { initLang, t } from './i18n';
+import { wireLanguageSwitch } from './i18n/dom';
 import { wireWizard } from './ui/wizard';
 import { startField } from './ui/field';
 import { chapters, intro } from './ui/motion';
@@ -26,6 +28,8 @@ document.querySelectorAll<HTMLElement>('i[data-icon]').forEach((el) => {
   el.setAttribute('aria-hidden', 'true');
 });
 
+initLang();
+wireLanguageSwitch();
 wireWizard(document.querySelector<HTMLElement>('[data-assistant]')!, !reduceMotion);
 const background = startField(field, [...document.querySelectorAll('[data-zone]')], reduceMotion);
 wireWorkIndex(
@@ -43,14 +47,14 @@ document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
   btn.addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(btn.dataset.copy ?? '');
-      label.textContent = 'Copied';
+      label.textContent = t('contact.copied');
       icon.innerHTML = check;
     } catch {
-      label.textContent = 'Select and copy it above';
+      label.textContent = t('contact.select');
     }
     window.clearTimeout(timer);
     timer = window.setTimeout(() => {
-      label.textContent = 'Copy email';
+      label.textContent = t('contact.copy');
       icon.innerHTML = copy;
     }, 2200);
   });

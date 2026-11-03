@@ -4,6 +4,10 @@ Personal portfolio of Albert Muntal, full-stack developer. It gathers Fittë, Mo
 
 The first screen runs the Fittë routine assistant live in the browser, with the same eight steps as the app: experience, days, duration, equipment, complaints, training plan, a preview where exercises can be swapped, and the final details. The rules are ports of the app and the API as pure functions with tests (`src/lib/`): templates, recommended days, the fit rules that swap exercises by equipment and injury area, the plan answers and the volume ramp. Not included: per-exercise plans, the optional AI text and saving. The background is gym equipment drawn on a canvas that reacts to the pointer.
 
+## Languages
+
+English and Spanish, with a switch in the header. The language comes from `?lang=es` or `?lang=en` in the URL (handy for a link in the Spanish CV), then from the saved choice, then from the browser. Every string lives in `src/i18n/messages.ts`; a test checks that both languages have the same keys and placeholders and that `index.html` only asks for strings that exist. Exercise names come in both languages from RepDB.
+
 ## Stack
 
 Vite, TypeScript and GSAP (ScrollTrigger, SplitText). No UI framework. Archivo (the font of the app, used for everything) self-hosted through Fontsource, interface icons from Phosphor and the gym equipment glyphs from Tabler (the icon family of the app). The look follows the app: neutral near-black and its mint aurora gradient.
