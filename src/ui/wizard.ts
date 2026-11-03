@@ -2,7 +2,7 @@ import { gsap } from 'gsap';
 import { AREAS, adjustDays, rankedCandidates, type Area, type AreaChoice, type AreaMode, type EquipmentPreference } from '../lib/exercise-fit';
 import { getLang, onLangChange, t } from '../i18n';
 import type { MessageKey } from '../i18n/messages';
-import { loadLibrary, nameOf, type Library } from '../lib/exercise-library';
+import { imageOf, loadLibrary, nameOf, type Library } from '../lib/exercise-library';
 import {
   BACKOFF_REPS_PRESETS,
   REPS_PRESETS,
@@ -197,7 +197,8 @@ export function wireWizard(root: HTMLElement, animate: boolean): void {
         return `<section class="day"><h3>${esc(t('prev.day', { n: day, name: sessionName(session) }))}<span>${t('prev.dayMeta', { count: rows.length, min: estimateMinutes(plans) })}</span></h3><ul>${rows.map((r, i) => {
           const changed = r.slug !== r.original;
           const note = r.reasons.length ? t('prev.changedBy', { what: joinWords(r.reasons) }) : changed ? t('prev.byYou') : r.unresolved ? t('prev.unresolved') : r.care.length ? t('prev.care', { areas: joinWords(r.care.map((a) => tk(`area.${a}.noun`))) }) : '';
-          return `<li><div><b>${esc(nameOf(library, r.slug))}</b>${note ? `<small>${esc(note)}</small>` : ''}${changed ? `<small>${esc(t('prev.was', { name: nameOf(library, r.original) }))}</small>` : ''}</div><span>${esc(prescription(plans[i]))}<small>${esc(planDetail(plans[i]))}</small></span>
+          const photo = imageOf(library, r.slug);
+          return `<li>${photo ? `<img class="thumb" src="${esc(photo)}" alt="" width="48" height="48" loading="lazy" decoding="async">` : '<span class="thumb thumb--empty"></span>'}<div><b>${esc(nameOf(library, r.slug))}</b>${note ? `<small>${esc(note)}</small>` : ''}${changed ? `<small>${esc(t('prev.was', { name: nameOf(library, r.original) }))}</small>` : ''}</div><span>${esc(prescription(plans[i]))}<small>${esc(planDetail(plans[i]))}</small></span>
             ${r.candidates.length ? `<select data-act="pick" data-slot="${esc(r.slot)}" aria-label="${esc(t('prev.changeLabel', { name: nameOf(library, r.slug) }))}"><option value="${esc(r.original)}">${changed ? t('prev.original') : t('prev.change')}</option>${r.candidates.filter((c) => c !== r.original).map((c) => `<option value="${esc(c)}" ${c === r.slug ? 'selected' : ''}>${esc(nameOf(library, c))}</option>`).join('')}</select>` : ''}</li>`;
         }).join('')}</ul></section>`;
       }).join('')}`;
