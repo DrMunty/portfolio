@@ -13,7 +13,10 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <script>
       if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');
+      // If the page script never runs, the intro must not leave the hero hidden.
+      setTimeout(function () { document.documentElement.classList.add('no-intro'); }, 4000);
     </script>
+    <noscript><style>.motion [data-split], .motion [data-intro] { visibility: visible; }</style></noscript>
   </head>
   <body>
     <a class="skip" href="#work">Skip to the projects</a>

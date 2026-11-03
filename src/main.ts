@@ -12,7 +12,7 @@ import copy from '@phosphor-icons/core/assets/regular/copy.svg?raw';
 import githubLogo from '@phosphor-icons/core/assets/regular/github-logo.svg?raw';
 import linkedinLogo from '@phosphor-icons/core/assets/regular/linkedin-logo.svg?raw';
 
-import { progressionStep, readNumber, suggestSets, type LoadType, type LoggedSet, type SetKind } from './lib/suggest-sets';
+import { readNumber, suggestSets, type LoadType, type LoggedSet, type SetKind } from './lib/suggest-sets';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -68,7 +68,6 @@ function wireDemo(demo: HTMLElement): void {
         gsap.fromTo(out, { y: 8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: 'expo.out' });
       }
     });
-    demo.dataset.step = String(progressionStep(type));
   };
 
   demo.addEventListener('input', () => render(true));
@@ -112,10 +111,6 @@ function intro(): void {
     gsap.fromTo(rest, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.9, ease: 'expo.out', stagger: 0.1, delay: 0.3 });
   };
   document.fonts.ready.then(play);
-  // If the intro cannot run, never leave the content hidden.
-  window.setTimeout(() => {
-    if (getComputedStyle(title).visibility === 'hidden') root.classList.add('no-intro');
-  }, 2500);
 }
 
 function chapters(): void {
