@@ -33,6 +33,10 @@ describe('suggestSets', () => {
     expect(s.suggestedWeight).toBe(56.25);
   });
 
+  it('rounds the result so floating point drift never reaches the screen', () => {
+    expect(suggestSets([working(29.51, 10)], 10, 'TOTAL')[0].suggestedWeight).toBe(32.01);
+  });
+
   it('decides each set on its own: a back-off can rise while the top set holds', () => {
     const result = suggestSets([working(60, 8), backoff(55, 10)], 10, 'PER_SIDE');
     expect(result.map((s) => s.reason)).toEqual(['MAINTAIN', 'INCREASE']);
