@@ -28,7 +28,7 @@ Reached from the CV (QR to GitHub), LinkedIn (projects section) and the GitHub p
 
 ## Capabilities and Constraints
 
-- Four projects. Public demos: Fittë https://beastmode-fitnessapp.vercel.app, HAMD https://movies-hector-albert.vercel.app, Budget Calculator https://projecte2-budget-albert.vercel.app. Alumni Platform has no public demo, only the repo (https://github.com/DrMunty/Projecte1-ITAlumni).
+- Four projects. Public demos: Fittë https://app.fitte.es, HAMD https://movies-hector-albert.vercel.app, Budget Calculator https://projecte2-budget-albert.vercel.app. Alumni Platform has no public demo, only the repo (https://github.com/DrMunty/Projecte1-ITAlumni).
 - Repos: Movies-Hector-Albert, Projecte2-Budget, Projecte1-ITAlumni and the profile repo are public. The two Fittë repos are private.
 - Contact: amuntalperez@gmail.com, https://github.com/DrMunty, https://www.linkedin.com/in/albert-muntal-perez.
 - Never invent figures, customers or personal data; ask. Verified figures: more than 280 merged pull requests across Fittë front and API, CI on every PR.
